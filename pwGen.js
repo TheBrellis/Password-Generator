@@ -1,5 +1,10 @@
-function pwGen(pwLength) {
+function pwGen() {
 
+  pwLength = prompt('How long would you like your password to be?');
+  typeSpecial = confirm('Would you like it to contain special characters?');
+  typeUpper = confirm('Would you like it to contain uppercase characters?');
+  typeLower = confirm('Would you like it to contain lowercase characters?');
+  typeNum = confirm('Would you like it to contain numeric characters?');
 
    // define an empty string called userPassword. 
 
