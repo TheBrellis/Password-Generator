@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Password Generator</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<body>
-    <h1>Password Generator</h1>
-
-    <!--Using a button. setting it to trigger the pwGen function when clicked-->
-    <button type='button' onclick='pwGen()'>Generate Password</button>
-
+    
+  </head>
+  <body>
+    <header>
+      <h1>Password Generator</h1>
+    </header>
+    <h2>Generate a Password</h2>
+    <textarea
+      readonly
+      id="password"
+      placeholder="Your Secure Password"
+      aria-label="Generated Password"
+    ></textarea>
+<!--When 'generate' button is pressed, pwGen() function runs-->
+    <button id="generate" type='button' onclick='pwGen()'>Generate Password</button>
+    <button id="copy">
+      Copy to Clipboard
+    </button>
+ <!--Link script.js to html-->
     <script rel='script' src='pwGen.js'></script>
-</body>
+  </body>
 </html>
