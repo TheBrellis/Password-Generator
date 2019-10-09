@@ -1,12 +1,56 @@
 function pwGen() {
 
-  pwLength = prompt('How long would you like your password to be?');
-  typeSpecial = confirm('Would you like it to contain special characters?');
-  typeUpper = confirm('Would you like it to contain uppercase characters?');
-  typeLower = confirm('Would you like it to contain lowercase characters?');
-  typeNum = confirm('Would you like it to contain numeric characters?');
+  // ############ NEXT COMMIT -m "ADDED CHARACTER STRINGS AND VERIFICATION OF USER SELECTIONS"
 
-   // define an empty string called userPassword. 
+// Defining strings for the available character types:
+
+  var charSpecial = '!#$%&)(*+,-./: ;<=>?@[\]^_`{|}~'
+  var charUpper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  var charLower = 'abcdefghijklmnopqrstuvwxyz';
+  var charNum = '0123456789';
+
+//*** PROMPTING USER *** for password lengths and character types to include: 
+  var pwLength = prompt('How long would you like your password to be?');
+  var typeSpecial = confirm('Would you like it to contain special characters?');
+  var typeUpper = confirm('Would you like it to contain uppercase characters?');
+  var typeLower = confirm('Would you like it to contain lowercase characters?');
+  var typeNum = confirm('Would you like it to contain numeric characters?');
+
+
+  //*** VERIFYING *** what types the user selected and setting up the typeArray accordingly
+
+  switch(pwLength,typeSpecial,typeUpper,typeLower,typeNum) {
+    //user selects all char types
+    case (typeSpecial === true && typeUpper === true && typeLower === true && typeNum === true):
+      var typeArray = [charSpecial, charUpper, charLower, charNum];
+      break;
+    //user does not want numbers
+    case (typeSpecial === true && typeUpper === true && typeLower === true && typeNum === false):
+      var typeArray = [charSpecial, charUpper, charLower];
+      break;
+    //user does not want lower case or numbers
+    case (typeSpecial === true && typeUpper === true && typeLower === false && typeNum === false):
+      var typeArray = [charSpecial, charUpper];
+      break;
+    //user does not want upper, lower, or numbers
+    case (typeSpecial === true && typeUpper === false && typeLower === false && typeNum === false):
+      var typeArray = [charSpecial];
+      alert('Only one type of character? OOOkay there big fella');
+      break;
+    //user says no to all character types
+    default:
+      alert("You have to pick something!");
+      var typeSpecial = confirm('Would you like it to contain special characters?');
+      var typeUpper = confirm('Would you like it to contain uppercase characters?');
+      var typeLower = confirm('Would you like it to contain lowercase characters?');
+      var typeNum = confirm('Would you like it to contain numeric characters?');
+      break;
+  }
+
+//defining an empty string called userPassword. Password will be buit in this string.
+userPassword = '';
+
+   
 
     //Randomly select a number called length between 8 and 128. (establish function using 4 steps through the For loop. Expand afterward.) 
     
