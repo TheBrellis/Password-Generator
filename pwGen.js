@@ -51,7 +51,9 @@ while (pwLength > 128 || pwLength < 8){
 userPassword = '';
 
 while (userPassword.length < pwLength) {
-
+  rando = Math.floor(Math.random() * 4);
+  switch(rando) {
+  case 0 : 
   if (special.boolean === true && userPassword.length < pwLength) {
     //selecting a random number between 0 and the length of special.values, assinging to local variable x
     x = Math.floor(Math.random() * special.values.length);
@@ -59,26 +61,29 @@ while (userPassword.length < pwLength) {
     console.log(userPassword.length);
   }
 
+  case 1 :
   if (upper.boolean === true && userPassword.length < pwLength ) {
     //selecting a random number between 0 and the length of special.values, assinging to local variable x
     x = Math.floor(Math.random() * upper.values.length);
     userPassword = userPassword + upper.values.charAt(x); //adding the 'random' character to the user password
     console.log(userPassword.length);
   }
- 
+
+  case 2 :
   if (lower.boolean === true && userPassword.length < pwLength) {
       //selecting a random number between 0 and the length of special.values, assinging to local variable x
       x = Math.floor(Math.random() * lower.values.length);
       userPassword = userPassword + lower.values.charAt(x); //adding the 'random' character to the user password
       console.log(userPassword.length);
     }
-
+  case 3 :
   if (num.boolean === true && userPassword.length < pwLength) {
     //selecting a random number between 0 and the length of special.values, assinging to local variable x
     x = Math.floor(Math.random() * num.values.length);
     userPassword = userPassword + num.values.charAt(x); //adding the 'random' character to the user password
     console.log(userPassword.length);
   }
+
 
 }
 
