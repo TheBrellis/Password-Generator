@@ -51,12 +51,32 @@ while (pwLength > 128 || pwLength < 8){
 userPassword = '';
 
 for (i=0; i < pwLength; i++ ) {
-  
-
+  if (special.boolean === true) {
+    //selecting a random number between 0 and the length of special.values, assinging to local variable x
+    x = Math.floor(Math.random) * special.values.length;
+    userPassword = userPassword + special.values.charAt(x); //adding the 'random' character to the user password
+  }
+  if (upper.boolean === true) {
+    //selecting a random number between 0 and the length of special.values, assinging to local variable x
+    x = Math.floor(Math.random) * upper.values.length;
+    userPassword = userPassword + upper.values.charAt(x); //adding the 'random' character to the user password
+  }
+  if (lower.boolean === true) {
+      //selecting a random number between 0 and the length of special.values, assinging to local variable x
+      x = Math.floor(Math.random) * lower.values.length;
+      userPassword = userPassword + lower.values.charAt(x); //adding the 'random' character to the user password
+  }
+  if (num.boolean === true) {
+    //selecting a random number between 0 and the length of special.values, assinging to local variable x
+    x = Math.floor(Math.random) * num.values.length;
+    userPassword = userPassword + num.values.charAt(x); //adding the 'random' character to the user password
+  }
 
 }
 
+console.log(userPassword);
 
+//Sudo code first draft
     //Randomly select a number called length between 8 and 128. (establish function using 4 steps through the For loop. Expand afterward.) 
     
   //  Step through a FOR loop the number of times as determined by the random number
