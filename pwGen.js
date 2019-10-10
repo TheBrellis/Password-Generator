@@ -10,7 +10,7 @@ var lower = {boolean: true, values: 'abcdefghijklmnopqrstuvwxyz'};
 var num = {boolean: true, values: '0123456789' };
 
 //*** PROMPTING USER *** for password length //
-  var pwLength = prompt('How long would you like your password to be? (must be between 8 and 128!)');
+var pwLength = prompt('How long would you like your password to be? (must be between 8 and 128!)');
 //***VERIFY*** that the password length is within the parameters
 while (pwLength > 128 || pwLength < 8){
   alert('Listen Fool, password has to be between 8 and 128 characters')
@@ -32,76 +32,58 @@ while (pwLength > 128 || pwLength < 8){
       }
     }
   //repeating prompts if the user did not pick a character type
-  while (pwArray.length === 0) {
-    alert("You've got to pick something!");
-    special.boolean = confirm('Would you like it to contain special characters?');
-    upper.boolean = confirm('Would you like it to contain uppercase characters?');
-    lower.boolean = confirm('Would you like it to contain lowercase characters?');
-    num.boolean = confirm('Would you like it to contain numeric characters?');
-    pwArray = [special.boolean, upper.boolean, lower.boolean, num.boolean];
-    for (i = pwArray.length -1; i >= 0; i--) {
-      if (pwArray[i] === false) {
-        pwArray.splice(i,1); //.splice removes a specific index from an array. 
+    while (pwArray.length === 0) {
+      alert("You've got to pick something!");
+      special.boolean = confirm('Would you like it to contain special characters?');
+      upper.boolean = confirm('Would you like it to contain uppercase characters?');
+      lower.boolean = confirm('Would you like it to contain lowercase characters?');
+      num.boolean = confirm('Would you like it to contain numeric characters?');
+      pwArray = [special.boolean, upper.boolean, lower.boolean, num.boolean];
+      for (i = pwArray.length -1; i >= 0; i--) {
+        if (pwArray[i] === false) {
+          pwArray.splice(i,1); //.splice removes a specific index from an array. 
+        }
       }
     }
-  }
 //****END OF USER INPUT AND VERIFICATIONS (this is where the fun begins)****//
 
 //defining an empty string called userPassword. Password will be built in this string.
 userPassword = '';
 
-for (i=0; i < pwLength; i++ ) {
-  if (special.boolean === true) {
+while (userPassword.length < pwLength) {
+
+  if (special.boolean === true && userPassword.length < pwLength) {
     //selecting a random number between 0 and the length of special.values, assinging to local variable x
-    x = Math.floor(Math.random) * special.values.length;
+    x = Math.floor(Math.random() * special.values.length);
     userPassword = userPassword + special.values.charAt(x); //adding the 'random' character to the user password
+    console.log(userPassword.length);
   }
-  if (upper.boolean === true) {
+
+  if (upper.boolean === true && userPassword.length < pwLength ) {
     //selecting a random number between 0 and the length of special.values, assinging to local variable x
-    x = Math.floor(Math.random) * upper.values.length;
+    x = Math.floor(Math.random() * upper.values.length);
     userPassword = userPassword + upper.values.charAt(x); //adding the 'random' character to the user password
+    console.log(userPassword.length);
   }
-  if (lower.boolean === true) {
+ 
+  if (lower.boolean === true && userPassword.length < pwLength) {
       //selecting a random number between 0 and the length of special.values, assinging to local variable x
-      x = Math.floor(Math.random) * lower.values.length;
+      x = Math.floor(Math.random() * lower.values.length);
       userPassword = userPassword + lower.values.charAt(x); //adding the 'random' character to the user password
-  }
-  if (num.boolean === true) {
+      console.log(userPassword.length);
+    }
+
+  if (num.boolean === true && userPassword.length < pwLength) {
     //selecting a random number between 0 and the length of special.values, assinging to local variable x
-    x = Math.floor(Math.random) * num.values.length;
+    x = Math.floor(Math.random() * num.values.length);
     userPassword = userPassword + num.values.charAt(x); //adding the 'random' character to the user password
+    console.log(userPassword.length);
   }
 
 }
 
 console.log(userPassword);
+console.log(pwLength);
 
-//Sudo code first draft
-    //Randomly select a number called length between 8 and 128. (establish function using 4 steps through the For loop. Expand afterward.) 
-    
-  //  Step through a FOR loop the number of times as determined by the random number
-    
-  //  set up an array (could also use an object?) with 4 strings (one for each character type). Each string contains all possible values for the character type. 
-    
-  //  in the four loop. Generate a random number between 0 and 3, use this to select what index of the array is being referenced for that input. 
-    
-  //  generate another random number between 0 and the length of the selected string. assign this to index of the string.
-    
-  //  add the above character to userPassword variable.
-    
-  //  Repeat until complete
-    
- //   at the end of the loop return userPassword. 
-    
- //   Output:
-    
- //   if you can use bootstrap do so. (easy peasy choice) 
-    
-  //  assign the button to run the function defined above.
-    
-  //  have the resulting variable printed to the needed area.
-    
-  //  Figure out how to make a copy to clipboard button. 
-    
 
 }
