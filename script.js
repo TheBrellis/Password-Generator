@@ -1,6 +1,10 @@
+
+
+//adding event listner to know when the generate button is pressed
+var createPassword = document.querySelector('#generate')
+createPassword.addEventListener("click", pwGen());
+
 function pwGen() {
-
-
 
 // Defining objects for the character types:
 
@@ -124,10 +128,9 @@ while (userPassword.length < pwLength) {
 //identify object in the page that the password should be written to
 
 var pwOutput = document.querySelector('#password')
-var createPassword = document.querySelector('#generate')
+pwOutput.textContent = userPassword;
 
-pwOutput.textcontent = userPassword;
 
 }
 
-creatPassword.addEventListener("click", pwGen());
+
