@@ -1,5 +1,5 @@
 function pwGen() {
-//Hello There//
+
 
 
 // Defining objects for the character types:
@@ -45,51 +45,89 @@ while (pwLength > 128 || pwLength < 8){
         }
       }
     }
-//****END OF USER INPUT AND VERIFICATIONS (this is where the fun begins)****//
+
+//****END OF USER INPUT AND VERIFICATIONS****//
 
 //defining an empty string called userPassword. Password will be built in this string.
 userPassword = '';
 
+// Establishing the first characters of the password to garuntee all character types are represented
+
+if (special.boolean === true) {
+  //selecting a random number between 0 and the length of the object, assigning to local variable x
+  x = Math.floor(Math.random() * special.values.length);
+  //adding the 'random' character to the user password
+  userPassword = userPassword + special.values.charAt(x);  
+}
+
+if (upper.boolean === true ) {
+  //selecting a random number between 0 and the length of the object, assigning to local variable x
+  x = Math.floor(Math.random() * upper.values.length);
+  //adding the 'random' character to the user password
+  userPassword = userPassword + upper.values.charAt(x); 
+}
+
+if (lower.boolean === true) {
+    //selecting a random number between 0 and the length of the object, assigning to local variable x
+    x = Math.floor(Math.random() * lower.values.length);
+    //adding the 'random' character to the user password
+    userPassword = userPassword + lower.values.charAt(x); 
+  }
+
+if (num.boolean === true) {
+  //selecting a random number between 0 and the length of the object, assinging to local variable x
+  x = Math.floor(Math.random() * num.values.length);
+  //adding the 'random' character to the user password
+  userPassword = userPassword + num.values.charAt(x);
+}
+
+// Generating the rest of the password: 
 while (userPassword.length < pwLength) {
-  rando = Math.floor(Math.random() * 4);
+  //selects the cases at random
+ var rando = Math.floor(Math.random() * 4);
   switch(rando) {
   case 0 : 
   if (special.boolean === true && userPassword.length < pwLength) {
     //selecting a random number between 0 and the length of special.values, assinging to local variable x
-    x = Math.floor(Math.random() * special.values.length);
-    userPassword = userPassword + special.values.charAt(x); //adding the 'random' character to the user password
-    console.log(userPassword.length);
+   var x = Math.floor(Math.random() * special.values.length);
+    //adding the 'random' character to the user password
+    userPassword = userPassword + special.values.charAt(x); 
   }
 
   case 1 :
   if (upper.boolean === true && userPassword.length < pwLength ) {
     //selecting a random number between 0 and the length of special.values, assinging to local variable x
     x = Math.floor(Math.random() * upper.values.length);
-    userPassword = userPassword + upper.values.charAt(x); //adding the 'random' character to the user password
-    console.log(userPassword.length);
+    //adding the 'random' character to the user password
+    userPassword = userPassword + upper.values.charAt(x); 
   }
 
   case 2 :
   if (lower.boolean === true && userPassword.length < pwLength) {
       //selecting a random number between 0 and the length of special.values, assinging to local variable x
       x = Math.floor(Math.random() * lower.values.length);
-      userPassword = userPassword + lower.values.charAt(x); //adding the 'random' character to the user password
-      console.log(userPassword.length);
+      //adding the 'random' character to the user password
+      userPassword = userPassword + lower.values.charAt(x); 
     }
+
   case 3 :
   if (num.boolean === true && userPassword.length < pwLength) {
     //selecting a random number between 0 and the length of special.values, assinging to local variable x
     x = Math.floor(Math.random() * num.values.length);
-    userPassword = userPassword + num.values.charAt(x); //adding the 'random' character to the user password
-    console.log(userPassword.length);
+    //adding the 'random' character to the user password
+    userPassword = userPassword + num.values.charAt(x); 
   }
+}
+}
+/***DISPLAYING PASSWORD ON THE PAGE***/
 
+//identify object in the page that the password should be written to
+
+var pwOutput = document.querySelector('#password')
+var createPassword = document.querySelector('#generate')
+
+pwOutput.textcontent = userPassword;
 
 }
 
-console.log(userPassword);
-console.log(pwLength);
-
-
-}
-}
+creatPassword.addEventListener("click", pwGen());
