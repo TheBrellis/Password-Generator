@@ -1,9 +1,9 @@
 //TO DO, pwGen function runs when page is loaded, not when button is pressed. 
 
 //Identifying the generate password button
-var createPassword = document.querySelector('#generate')
-
-
+var createPassword = document.querySelector('#generate');
+var copyPassword = document.querySelector('#copy');
+var pwCurrent = document.querySelector('#password');
 function pwGen() {
 // Defining objects for the character types:
 
@@ -16,7 +16,7 @@ var num = {boolean: true, values: '0123456789' };
 var pwLength = prompt('How long would you like your password to be? (must be between 8 and 128!)');
 //***VERIFY*** that the password length is within the parameters
 while (pwLength > 128 || pwLength < 8){
-  alert('Listen Fool, password has to be between 8 and 128 characters')
+  alert('Listen Fool, password has to be between 8 and 128 characters');
   pwLength = prompt('Now, how long would you like your password to be?');
 }
 //*** PROMPTING USER *** for character types //
@@ -134,4 +134,7 @@ pwOutput.textContent = userPassword;
 
 // adding an Event Listener to know when the generate button is pressed
 createPassword.addEventListener("click", pwGen());
-
+copyPassword.addEventListener("click", function() {
+pwCurrent.value.execCommand("copy");
+alert("Your Password has been copied to the clipboard!");
+})
