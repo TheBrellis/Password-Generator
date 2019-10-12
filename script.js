@@ -1,9 +1,13 @@
-//TO DO, pwGen function runs when page is loaded, not when button is pressed. 
+//TO DO: fix the copy button, make it so copy button only appears when theres a password in the textbox
 
 //Identifying the generate password button
 var createPassword = document.querySelector('#generate');
 var copyPassword = document.querySelector('#copy');
-var pwCurrent = document.querySelector('#password');
+var pwOutput = document.querySelector('#password');
+
+
+
+
 function pwGen() {
 // Defining objects for the character types:
 
@@ -14,11 +18,17 @@ var num = {boolean: true, values: '0123456789' };
 
 //*** PROMPTING USER *** for password length //
 var pwLength = prompt('How long would you like your password to be? (must be between 8 and 128!)');
+console.log(pwLength);
+//breaks out of the function if user presses cancel
+if (pwLength === null){
+  return;
+}
 //***VERIFY*** that the password length is within the parameters
 while (pwLength > 128 || pwLength < 8){
   alert('Listen Fool, password has to be between 8 and 128 characters');
   pwLength = prompt('Now, how long would you like your password to be?');
 }
+
 //*** PROMPTING USER *** for character types //
    special.boolean = confirm('Would you like it to contain special characters?');
    upper.boolean = confirm('Would you like it to contain uppercase characters?');
@@ -127,16 +137,25 @@ while (userPassword.length < pwLength) {
 /***DISPLAYING PASSWORD ON THE PAGE***/
 
 //identify object in the page that the password should be written to
-
-var pwOutput = document.querySelector('#password')
 pwOutput.textContent = userPassword;
 
-
+//makes the copy button appear only when there's something to copy
+copyPassword.classList.remove('d-none');
 }
 
 // adding an Event Listener to know when the generate button is pressed
 createPassword.addEventListener("click", pwGen);
-copyPassword.addEventListener("click", function() {
-pwCurrent.value.execCommand("copy");
+
+// adding event listener to copy generated password to keyboard
+copyPassword.addEventListener("click", function(event) {
+console.log(event);
+//selects the password that was generated in the text area
+pwOutput.select();
+//copies the value of the text are to the clipboard
+document.execCommand("copy");
 alert("Your Password has been copied to the clipboard!");
+
 })
+
+
+
