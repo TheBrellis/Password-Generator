@@ -1,11 +1,10 @@
+//TO DO, pwGen function runs when page is loaded, not when button is pressed. 
 
-
-//adding event listner to know when the generate button is pressed
+//Identifying the generate password button
 var createPassword = document.querySelector('#generate')
-createPassword.addEventListener("click", pwGen());
+
 
 function pwGen() {
-
 // Defining objects for the character types:
 
 var special = {boolean: true, values:'!#$%&)(*+,-./: ;<=>?@]\[^_`{|}~'};
@@ -133,4 +132,6 @@ pwOutput.textContent = userPassword;
 
 }
 
+// adding an Event Listener to know when the generate button is pressed
+createPassword.addEventListener("click", pwGen());
 
