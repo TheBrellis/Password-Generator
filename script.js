@@ -135,14 +135,13 @@ while (userPassword.length < pwLength) {
 }
 }
 /***DISPLAYING PASSWORD ON THE PAGE***/
-
-//identify object in the page that the password should be written to
 pwOutput.textContent = userPassword;
 
 //makes the copy button appear only when there's something to copy
 copyPassword.classList.remove('d-none');
-}
 
+}
+//************************EVENT LISTENERS************************************************************
 // adding an Event Listener to know when the generate button is pressed
 createPassword.addEventListener("click", pwGen);
 
