@@ -90,36 +90,38 @@ while (userPassword.length < pwLength) {
  var rando = Math.floor(Math.random() * 4);
   switch(rando) {
   case 0 : 
-  if (special.boolean === true && userPassword.length < pwLength) {
+  if (special.boolean) {
     //selecting a random number between 0 and the length of special.values, assinging to local variable x
    var x = Math.floor(Math.random() * special.values.length);
     //adding the 'random' character to the user password
     userPassword = userPassword + special.values.charAt(x); 
   }
+  break; //break out of switch to only add 1 element per iteration of the while loop
 
   case 1 :
-  if (upper.boolean === true && userPassword.length < pwLength ) {
+  if (upper.boolean) {
     //selecting a random number between 0 and the length of special.values, assinging to local variable x
     x = Math.floor(Math.random() * upper.values.length);
     //adding the 'random' character to the user password
     userPassword = userPassword + upper.values.charAt(x); 
   }
-
+  break; //break out of switch to only add 1 element per iteration of the while loop
   case 2 :
-  if (lower.boolean === true && userPassword.length < pwLength) {
+  if (lower.boolean) {
       //selecting a random number between 0 and the length of special.values, assinging to local variable x
       x = Math.floor(Math.random() * lower.values.length);
       //adding the 'random' character to the user password
       userPassword = userPassword + lower.values.charAt(x); 
     }
-
+  break; //break out of switch to only add 1 element per iteration of the while loop
   case 3 :
-  if (num.boolean === true && userPassword.length < pwLength) {
+  if (num.boolean) {
     //selecting a random number between 0 and the length of special.values, assinging to local variable x
     x = Math.floor(Math.random() * num.values.length);
     //adding the 'random' character to the user password
     userPassword = userPassword + num.values.charAt(x); 
   }
+  break; //break out of switch to only add 1 element per iteration of the while loop
 }
 }
 /***DISPLAYING PASSWORD ON THE PAGE***/
@@ -133,7 +135,7 @@ pwOutput.textContent = userPassword;
 }
 
 // adding an Event Listener to know when the generate button is pressed
-createPassword.addEventListener("click", pwGen());
+createPassword.addEventListener("click", pwGen);
 copyPassword.addEventListener("click", function() {
 pwCurrent.value.execCommand("copy");
 alert("Your Password has been copied to the clipboard!");
