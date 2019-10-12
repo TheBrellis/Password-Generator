@@ -5,9 +5,6 @@ var createPassword = document.querySelector('#generate');
 var copyPassword = document.querySelector('#copy');
 var pwOutput = document.querySelector('#password');
 
-
-
-
 function pwGen() {
 // Defining objects for the character types:
 
@@ -18,7 +15,6 @@ var num = {boolean: true, values: '0123456789' };
 
 //*** PROMPTING USER *** for password length //
 var pwLength = prompt('How long would you like your password to be? (must be between 8 and 128!)');
-console.log(pwLength);
 //breaks out of the function if user presses cancel
 if (pwLength === null){
   return;
@@ -66,28 +62,28 @@ userPassword = '';
 
 // Establishing the first characters of the password to garuntee all character types are represented
 
-if (special.boolean === true) {
+if (special.boolean) {
   //selecting a random number between 0 and the length of the object, assigning to local variable x
   x = Math.floor(Math.random() * special.values.length);
   //adding the 'random' character to the user password
   userPassword = userPassword + special.values.charAt(x);  
 }
 
-if (upper.boolean === true ) {
+if (upper.boolean ) {
   //selecting a random number between 0 and the length of the object, assigning to local variable x
   x = Math.floor(Math.random() * upper.values.length);
   //adding the 'random' character to the user password
   userPassword = userPassword + upper.values.charAt(x); 
 }
 
-if (lower.boolean === true) {
+if (lower.boolean) {
     //selecting a random number between 0 and the length of the object, assigning to local variable x
     x = Math.floor(Math.random() * lower.values.length);
     //adding the 'random' character to the user password
     userPassword = userPassword + lower.values.charAt(x); 
   }
 
-if (num.boolean === true) {
+if (num.boolean) {
   //selecting a random number between 0 and the length of the object, assinging to local variable x
   x = Math.floor(Math.random() * num.values.length);
   //adding the 'random' character to the user password
@@ -147,7 +143,6 @@ createPassword.addEventListener("click", pwGen);
 
 // adding event listener to copy generated password to keyboard
 copyPassword.addEventListener("click", function(event) {
-console.log(event);
 //selects the password that was generated in the text area
 pwOutput.select();
 //copies the value of the text are to the clipboard
