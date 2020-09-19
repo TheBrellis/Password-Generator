@@ -52,7 +52,12 @@ function checkType() {
 //****END OF USER INPUT AND VERIFICATIONS****//
 
 function pwGen() {
+  initialChars()
+  addChars()
+  displayPW()
+}
 
+function initialChars() {
   // Establishing the first characters of the password to garuntee all character types are represented
   if (special.boolean) {
     //selecting a random number between 0 and the length of the object, assigning to local variable x
@@ -81,10 +86,11 @@ function pwGen() {
     //adding the 'random' character to the user password
     userPassword = userPassword + num.values.charAt(x);
   }
+}
 
-  // Generating the rest of the password: 
-  while (userPassword.length < pwLength) {
-    //selects the cases at random
+function addChars() {
+  //selects the cases at random
+  if (userPassword.length < pwLength) {
     var rando = Math.floor(Math.random() * 4);
     switch (rando) {
       case 0:
@@ -121,15 +127,9 @@ function pwGen() {
         }
         break; //break out of switch to only add 1 element per iteration of the while loop
     }
+    addChars();
   }
-
-  displayPW()
-
 }
-
-// function addOneChar() {
-
-// }
 
 function displayPW() {
   /***DISPLAYING PASSWORD ON THE PAGE***/
