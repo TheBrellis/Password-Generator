@@ -10,8 +10,12 @@ var special = { boolean: true, values: '!#$%&)(*+,-./: ;<=>?@]\[^_`{|}~' };
 var upper = { boolean: true, values: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' };
 var lower = { boolean: true, values: 'abcdefghijklmnopqrstuvwxyz' };
 var num = { boolean: true, values: '0123456789' };
+
+// Defining password variables
 var pwLength = 0;
 var charTypes = [];
+var userPassword = '';
+
 //*** PROMPTING USER *** for password length //
 function promptUser() {
   pwLength = prompt('How long would you like your password to be? (must be between 8 and 128!)');
@@ -46,13 +50,10 @@ function checkType() {
   }
 }
 //****END OF USER INPUT AND VERIFICATIONS****//
+
 function pwGen() {
 
-  //defining an empty string called userPassword. Password will be built in this string.
-  userPassword = '';
-
   // Establishing the first characters of the password to garuntee all character types are represented
-
   if (special.boolean) {
     //selecting a random number between 0 and the length of the object, assigning to local variable x
     x = Math.floor(Math.random() * special.values.length);
@@ -121,12 +122,20 @@ function pwGen() {
         break; //break out of switch to only add 1 element per iteration of the while loop
     }
   }
+
+  displayPW()
+
+}
+
+// function addOneChar() {
+
+// }
+
+function displayPW() {
   /***DISPLAYING PASSWORD ON THE PAGE***/
   pwOutput.textContent = userPassword;
-
-  //makes the copy button appear only when there's something to copy
+  //makes the copy button appear once password has been generated
   copyPassword.classList.remove('d-none');
-
 }
 //************************EVENT LISTENERS************************************************************
 // adding an Event Listener to know when the generate button is pressed
