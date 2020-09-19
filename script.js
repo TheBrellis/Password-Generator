@@ -11,7 +11,7 @@ var upper = { boolean: true, values: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' };
 var lower = { boolean: true, values: 'abcdefghijklmnopqrstuvwxyz' };
 var num = { boolean: true, values: '0123456789' };
 var pwLength = 0;
-
+var charTypes = [];
 //*** PROMPTING USER *** for password length //
 function promptUser() {
   pwLength = prompt('How long would you like your password to be? (must be between 8 and 128!)');
@@ -20,41 +20,33 @@ function promptUser() {
     alert('Listen Fool, password has to be between 8 and 128 characters');
     promptUser();
   } else {
-    pwGen();
+    checkType();
   }
 }
-
-function pwGen() {
-  //*** PROMPTING USER *** for character types //
+//*** PROMPTING USER *** for character types //
+function checkType() {
   special.boolean = confirm('Would you like it to contain special characters?');
   upper.boolean = confirm('Would you like it to contain uppercase characters?');
   lower.boolean = confirm('Would you like it to contain lowercase characters?');
   num.boolean = confirm('Would you like it to contain numeric characters?');
   //setting an array that includes all possible character types
-  pwArray = [special.boolean, upper.boolean, lower.boolean, num.boolean];
-  //*** VERIFY *** that the user selected a character type //
+  charTypes = [special.boolean, upper.boolean, lower.boolean, num.boolean];
   //removing all of the character types the user does not want 
-  for (i = pwArray.length - 1; i >= 0; i--) {
-    if (pwArray[i] === false) {
-      pwArray.splice(i, 1); //.splice removes a specific index from an array. 
+  for (i = charTypes.length - 1; i >= 0; i--) {
+    if (charTypes[i] === false) {
+      charTypes.splice(i, 1); //.splice removes a specific index from an array. 
     }
   }
-  //repeating prompts if the user did not pick a character type
-  while (pwArray.length === 0) {
+  //*** VERIFY *** that the user selected a character type //
+  if (charTypes.length === 0) {
     alert("You've got to pick something!");
-    special.boolean = confirm('Would you like it to contain special characters?');
-    upper.boolean = confirm('Would you like it to contain uppercase characters?');
-    lower.boolean = confirm('Would you like it to contain lowercase characters?');
-    num.boolean = confirm('Would you like it to contain numeric characters?');
-    pwArray = [special.boolean, upper.boolean, lower.boolean, num.boolean];
-    for (i = pwArray.length - 1; i >= 0; i--) {
-      if (pwArray[i] === false) {
-        pwArray.splice(i, 1); //.splice removes a specific index from an array. 
-      }
-    }
+    checkType()
+  } else {
+    pwGen()
   }
-
-  //****END OF USER INPUT AND VERIFICATIONS****//
+}
+//****END OF USER INPUT AND VERIFICATIONS****//
+function pwGen() {
 
   //defining an empty string called userPassword. Password will be built in this string.
   userPassword = '';
